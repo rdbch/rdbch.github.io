@@ -890,6 +890,8 @@
     .qualitative-figure { max-width: none; margin-bottom: 0; }
     .streaming-figure { max-width: none; margin: 1.5rem 0 0; }
     .qualitative-figure img { border-radius: 6px; }
+    .q-carousel { margin-top: 0; }  /* sits under its scene tabs, like the tables */
+    .q-stage { touch-action: pan-y; }
     .capacity-plots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; align-items: end; }
     /* one caption under each plot */
     .capacity-caption { margin-top: 0.35rem; font-size: 0.85rem; color: var(--text-secondary); text-align: center; line-height: 1.4; min-height: 2.8em; }
@@ -3419,15 +3421,36 @@
           <p class="results-text">All methods look alike at full capacity but diverge as the budget shrinks. Ours keeps the scene covered at low budgets and stays close to FlexGS, which cannot be rendered as a prefix.</p>
           <ul class="qa-points results-points">
             <li>
-              <p><strong>Qualitatively.</strong> Bonsai at four budgets.</p>
-              <figure class="paper-figure is-wide qualitative-figure">
-                <a class="theme-light" href="static/images/results/qualitative_lod_light.svg" target="_blank" rel="noopener" title="Open full size">
-                  <img src="static/images/results/qualitative_lod_light.svg" alt="Bonsai rendered by 3DGS-MCMC, LightGaussian, MGS, Ours and FlexGS at 100%, 10%, 1% and 0.1% of the Gaussians, with FPS and PSNR for each image" loading="lazy" width="1879" height="1030">
-                </a>
-                <a class="theme-dark" href="static/images/results/qualitative_lod_dark.svg" target="_blank" rel="noopener" title="Open full size">
-                  <img src="static/images/results/qualitative_lod_dark.svg" alt="Bonsai rendered by 3DGS-MCMC, LightGaussian, MGS, Ours and FlexGS at 100%, 10%, 1% and 0.1% of the Gaussians, with FPS and PSNR for each image" loading="lazy" width="1879" height="1030">
-                </a>
-                <figcaption>Bonsai at 100%, 10%, 1% and 0.1% of the Gaussians; insets report FPS and PSNR. FlexGS is not prefix-renderable and cannot reach 0.1%. Click to enlarge.</figcaption>
+              <p><strong>Qualitatively.</strong> Three MipNeRF360 scenes at four budgets.</p>
+              <div class="ds-tabs" role="tablist" aria-label="Scene"><button type="button" role="tab" id="qual-tab-bonsai" aria-controls="qual-panel-bonsai" aria-selected="true" tabindex="0">Bonsai</button><button type="button" role="tab" id="qual-tab-garden" aria-controls="qual-panel-garden" aria-selected="false" tabindex="-1">Garden</button><button type="button" role="tab" id="qual-tab-room" aria-controls="qual-panel-room" aria-selected="false" tabindex="-1">Room</button></div>
+              <figure class="paper-figure is-wide qualitative-figure q-carousel" aria-roledescription="carousel" aria-label="Qualitative comparison across budgets">
+                <div class="q-stage">
+                  <div class="q-slide" id="qual-panel-bonsai" role="tabpanel" aria-labelledby="qual-tab-bonsai">
+                    <a class="theme-light" href="static/images/results/qualitative_lod_bonsai_light.svg" target="_blank" rel="noopener" title="Open full size">
+                      <img src="static/images/results/qualitative_lod_bonsai_light.svg" alt="Bonsai rendered by 3DGS-MCMC, LightGaussian, MGS, Ours and FlexGS at 100%, 10%, 1% and 0.1% of the Gaussians, with FPS and PSNR for each image" loading="lazy" width="1879" height="1030">
+                    </a>
+                    <a class="theme-dark" href="static/images/results/qualitative_lod_bonsai_dark.svg" target="_blank" rel="noopener" title="Open full size">
+                      <img src="static/images/results/qualitative_lod_bonsai_dark.svg" alt="Bonsai rendered by 3DGS-MCMC, LightGaussian, MGS, Ours and FlexGS at 100%, 10%, 1% and 0.1% of the Gaussians, with FPS and PSNR for each image" loading="lazy" width="1879" height="1030">
+                    </a>
+                  </div>
+                  <div class="q-slide" id="qual-panel-garden" role="tabpanel" aria-labelledby="qual-tab-garden" hidden>
+                    <a class="theme-light" href="static/images/results/qualitative_lod_garden_light.svg" target="_blank" rel="noopener" title="Open full size">
+                      <img src="static/images/results/qualitative_lod_garden_light.svg" alt="Garden rendered by 3DGS-MCMC, LightGaussian, MGS, Ours and FlexGS at 100%, 10%, 1% and 0.1% of the Gaussians, with FPS and PSNR for each image" loading="lazy" width="1892" height="1030">
+                    </a>
+                    <a class="theme-dark" href="static/images/results/qualitative_lod_garden_dark.svg" target="_blank" rel="noopener" title="Open full size">
+                      <img src="static/images/results/qualitative_lod_garden_dark.svg" alt="Garden rendered by 3DGS-MCMC, LightGaussian, MGS, Ours and FlexGS at 100%, 10%, 1% and 0.1% of the Gaussians, with FPS and PSNR for each image" loading="lazy" width="1892" height="1030">
+                    </a>
+                  </div>
+                  <div class="q-slide" id="qual-panel-room" role="tabpanel" aria-labelledby="qual-tab-room" hidden>
+                    <a class="theme-light" href="static/images/results/qualitative_lod_room_light.svg" target="_blank" rel="noopener" title="Open full size">
+                      <img src="static/images/results/qualitative_lod_room_light.svg" alt="Room rendered by 3DGS-MCMC, LightGaussian, MGS, Ours and FlexGS at 100%, 10%, 1% and 0.1% of the Gaussians, with FPS and PSNR for each image" loading="lazy" width="1879" height="1030">
+                    </a>
+                    <a class="theme-dark" href="static/images/results/qualitative_lod_room_dark.svg" target="_blank" rel="noopener" title="Open full size">
+                      <img src="static/images/results/qualitative_lod_room_dark.svg" alt="Room rendered by 3DGS-MCMC, LightGaussian, MGS, Ours and FlexGS at 100%, 10%, 1% and 0.1% of the Gaussians, with FPS and PSNR for each image" loading="lazy" width="1879" height="1030">
+                    </a>
+                  </div>
+                </div>
+                <figcaption>Each scene at 100%, 10%, 1% and 0.1% of the Gaussians; insets report FPS and PSNR. FlexGS is not prefix-renderable and cannot reach 0.1%. Click to enlarge.</figcaption>
               </figure>
             </li>
             <li>
@@ -4173,6 +4196,24 @@
         if (i < 0 || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
         const next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
         next.focus(); select(next); e.preventDefault();
+      });
+    });
+
+    // Qualitative figure: swiping the image steps through the scene tabs above it.
+    document.querySelectorAll(".q-carousel").forEach((fig) => {
+      const tabs = [...fig.previousElementSibling.querySelectorAll('[role="tab"]')];
+      const step = (d) => {
+        const i = tabs.findIndex((t) => t.getAttribute("aria-selected") === "true");
+        tabs[(i + d + tabs.length) % tabs.length].click();
+      };
+      let x0 = null;
+      const stage = fig.querySelector(".q-stage");
+      stage.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+      stage.addEventListener("touchend", (e) => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0;
+        x0 = null;
+        if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
       });
     });
 
